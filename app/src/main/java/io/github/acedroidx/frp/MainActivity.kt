@@ -1,6 +1,7 @@
 package io.github.acedroidx.frp
 
 import android.Manifest
+import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.ComponentName
@@ -347,7 +348,12 @@ class MainActivity : ComponentActivity() {
     private fun deleteConfig(config: FrpConfig) {
         val file = config.getFile(this)
         if (file.exists()) {
-            file.delete()
+            AlertDialog.Builder(this)
+                .setTitle("删除配置")
+                .setMessage("确定要删除该配置文件吗？")
+                .setPositiveButton("确定") { _, _ -> file.delete(); updateConfigList() }
+                .setNegativeButton("取消", null)
+                .show()
         }
         updateConfigList()
     }
