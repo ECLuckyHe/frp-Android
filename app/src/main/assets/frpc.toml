@@ -1,15 +1,9 @@
-serverAddr = ""
+serverAddr = "127.0.0.1"
 serverPort = 7000
-dnsServer = "114.114.114.114"
 
-[log]
-level = "debug"
-disablePrintColor = true
-
-[[visitors]]
-name = "p2p_visitor"
-type = "xtcp"
-serverName = ""
-secretKey = ""
-bindAddr = "127.0.0.1"
-bindPort = 6000
+[[proxies]]
+name = "test-tcp"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 22
+remotePort = 6000
